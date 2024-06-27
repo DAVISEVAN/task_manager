@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .task-list {
+      margin-top: 20px;
+    }
+    .task-item {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .task-actions {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>All Tasks</h1>
+  <div class="task-list">
+    <% if @tasks.any? %>
+      <% @tasks.each do |task| %>
+        <div class="task-item">
+          <h3><%= link_to task.title, task_path(task) %></h3>
+          <p><%= task.description %></p>
+          <div class="task-actions">
+            <%= link_to 'Edit', edit_task_path(task) %>
+            <%= form_with model: task, method: :delete, local: true do %>
+              <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No tasks available.</p>
+    <% end %>
+  </div>
+</body>
+</html>
+

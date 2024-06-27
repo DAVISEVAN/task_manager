@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to the Task Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    ul li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Task Manager</h1>
+  <ul>
+    <li><a href="<%= tasks_path %>">Task Index</a></li>
+    <li><a href="<%= new_task_path %>">New Task</a></li>
+  </ul>
+</body>
+</html>

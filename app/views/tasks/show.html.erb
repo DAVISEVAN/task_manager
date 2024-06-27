@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @task.title %> - Task Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .task-detail {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .task-actions {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1><%= @task.title %></h1>
+  <div class="task-detail">
+    <p><%= @task.description %></p>
+  </div>
+  <div class="task-actions">
+    <%= link_to 'Edit', edit_task_path(@task) %>
+    <%= form_with model: @task, method: :delete, local: true do %>
+      <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <%= link_to 'Back to All Tasks', tasks_path %>
+  </div>
+</body>
+</html>
